@@ -22,7 +22,7 @@
   }
 </script>
 
-<div class="min-h-screen bg-slate-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+<main class="min-h-screen bg-slate-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
     <div class="inline-flex w-14 h-14 rounded-2xl bg-indigo-600 items-center justify-center text-white shadow-xl shadow-indigo-500/25 mb-3">
       <Link size={32} strokeWidth={2.5} />
@@ -57,4 +57,4 @@
       <slot />
     </div>
   </div>
-</div>
+</main>

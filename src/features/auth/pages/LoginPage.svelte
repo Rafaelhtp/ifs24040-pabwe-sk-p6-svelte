@@ -45,7 +45,7 @@
     <div class="relative">
       <Mail
         size={18}
-        class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+        class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600"
       />
       <input
         type="email"
@@ -53,7 +53,7 @@
         data-testid="login-email-input"
         bind:value={email}
         placeholder="nama@email.com"
-        class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+        class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
         required
       />
     </div>
@@ -66,7 +66,7 @@
     <div class="relative">
       <Lock
         size={18}
-        class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+        class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600"
       />
       <input
         type="password"
@@ -74,7 +74,7 @@
         data-testid="login-password-input"
         bind:value={password}
         placeholder="••••••••"
-        class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+        class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
         required
       />
     </div>
