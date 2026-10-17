@@ -25,17 +25,8 @@ function inlineCssPlugin() {
   };
 }
 
-// Set ke false jika hosting TIDAK menjalankan `vite preview`
-// (mis. hanya menyajikan folder dist statis). Jika false, aplikasi memanggil
-// API Delcom langsung seperti sebelumnya.
-const USE_API_PROXY = true;
-const API_PROXY_PATH = "/delcom-api";
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const baseUrl = env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1";
-  const apiUrl = new URL(baseUrl);
-  const useProxy = USE_API_PROXY && mode === "production";
 
   return {
     plugins: [
@@ -51,21 +42,14 @@ export default defineConfig(({ mode }) => {
     },
     preview: {
       port: Number(env.APP_PORT) || 3004,
-      // Request /delcom-api/* diteruskan server ke API Delcom sehingga browser
-      // hanya melakukan request satu-origin (tanpa preflight CORS + Authorization).
-      proxy: {
-        [API_PROXY_PATH]: {
-          target: apiUrl.origin,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(API_PROXY_PATH, apiUrl.pathname),
-        },
-      },
     },
     build: {
       chunkSizeWarningLimit: 1500,
     },
     define: {
-      DELCOM_BASEURL: JSON.stringify(useProxy ? API_PROXY_PATH : baseUrl),
+      DELCOM_BASEURL: JSON.stringify(
+        env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"
+      ),
     },
     test: {
       globals: true,
