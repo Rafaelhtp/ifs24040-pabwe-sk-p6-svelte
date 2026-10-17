@@ -1,51 +1,52 @@
-import Swal from "sweetalert2";
+async function loadSwal() {
+  const { default: Swal } = await import("sweetalert2");
+  return Swal;
+}
+
+async function showAlertDialog({ title, message, icon, confirmButtonColor }) {
+  const Swal = await loadSwal();
+  const result = await Swal.fire({
+    title,
+    text: message,
+    icon,
+    confirmButtonText: "Tutup",
+    confirmButtonColor,
+  });
+  if (result.isConfirmed) {
+    Swal.close();
+  }
+  return result;
+}
 
 export function showErrorDialog(message) {
-  return Swal.fire({
+  return showAlertDialog({
     title: "Terjadi Kesalahan",
-    text: message,
+    message,
     icon: "error",
-    confirmButtonText: "Tutup",
     confirmButtonColor: "#ef4444",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.close();
-    }
-    return result;
   });
 }
 
 export function showWarningDialog(message) {
-  return Swal.fire({
+  return showAlertDialog({
     title: "Peringatan",
-    text: message,
+    message,
     icon: "warning",
-    confirmButtonText: "Tutup",
     confirmButtonColor: "#f59e0b",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.close();
-    }
-    return result;
   });
 }
 
 export function showSuccessDialog(message) {
-  return Swal.fire({
+  return showAlertDialog({
     title: "Tindakan Berhasil",
-    text: message,
+    message,
     icon: "success",
-    confirmButtonText: "Tutup",
     confirmButtonColor: "#10b981",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.close();
-    }
-    return result;
   });
 }
 
-export function showConfirmDialog(message) {
+export async function showConfirmDialog(message) {
+  const Swal = await loadSwal();
   return Swal.fire({
     title: "Konfirmasi",
     text: message,
